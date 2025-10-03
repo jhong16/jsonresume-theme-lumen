@@ -1,0 +1,21 @@
+{
+  "name": "jsonresume-theme-lumen",
+  "version": "0.0.1",
+  "description": "A JSON Resume Theme",
+  "author": "Ji hann Hong",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhong16/jsonresume-theme-lumen.git"
+  },
+  "license": "GPL",
+  "dependencies": {
+    "css": "^3.0.0",
+    "handlebars": "^4.7.8"
+  },
+  "main": "index.js",
+  "keywords": [
+    "resume",
+    "jsonresume",
+    "theme"
+  ]
+}

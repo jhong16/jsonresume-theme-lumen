@@ -1,0 +1,148 @@
+{
+  "title": "Resume Schema",
+  "description": "Schema for representing a resume object",
+  "type": "object",
+  "definitions": {
+    "resumeDate": {
+      "type": "string",
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\.\\s\\d{4}$",
+          "description": "A date in 'Jan. 2025' format"
+        },
+        {
+          "type": "string",
+          "enum": ["Present"],
+          "description": "'Present' for ongoing roles"
+        }
+      ]
+    },
+    "year": {
+      "type": "string",
+      "pattern": "^(19|20)\\d{2}$",
+      "description": "A year in YYYY format, e.g., 1997 or 2025"
+    }
+  },
+  "properties": {
+    "basics": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "firstName": { "type": "string" },
+        "middleName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "location": {
+          "type": "object",
+          "properties": {
+            "address": { "type": "string" },
+            "postalCode": { "type": "string" },
+            "city": { "type": "string" },
+            "countryCode": { "type": "string" },
+            "region": { "type": "string" }
+          },
+          "required": ["city", "countryCode", "region"]
+        },
+        "profiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "network": { "type": "string" },
+              "username": { "type": "string" },
+              "url": { "type": "string", "format": "uri" }
+            },
+            "required": ["network", "url"]
+          }
+        },
+        "summary": { "type": "string" }
+      },
+      "required": ["name", "email", "phone", "location", "summary"]
+    },
+    "work": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "location": { "type": "string" },
+          "position": { "type": "string" },
+          "startDate": { "$ref": "#/definitions/resumeDate" },
+          "endDate": { "$ref": "#/definitions/resumeDate" },
+          "summary": { "type": "string" },
+          "highlights": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "highlight": { "type": "string" },
+                "keyResults": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              },
+              "required": ["highlight"]
+            }
+          }
+        },
+        "required": ["name", "position", "startDate", "endDate"]
+      }
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "institution": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "area": { "type": "string" },
+          "studyType": { "type": "string" },
+          "startDate": { "$ref": "#/definitions/resumeDate" },
+          "endDate": { "$ref": "#/definitions/resumeDate" },
+          "gpa": { "type": "string" },
+          "gpaMax": { "type": "string" }
+        },
+        "required": ["institution", "studyType", "startDate", "endDate"]
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "level": { "type": "string" },
+          "keywords": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["name", "keywords"]
+      }
+    },
+    "interests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "keywords": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["name"]
+      }
+    },
+    "certificates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "date": { "$ref": "#/definitions/year" },
+          "issuer": { "type": "string" },
+          "url": { "type": "string", "format": "uri" }
+        },
+        "required": ["name", "date", "issuer", "url"]
+      }
+    }
+  },
+  "required": ["basics"]
+}

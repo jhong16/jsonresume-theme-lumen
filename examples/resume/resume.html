@@ -1,0 +1,568 @@
+<!doctype html>
+<html>
+	<head>
+
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, user-scalable=no, minimal-ui'>
+
+	<title>Richard Hendrik</title>
+
+	<style>
+	/* Base styles */
+
+/* Typography */
+
+:root {
+  --font-family-sans: "Arial", "Helvetica Neue", sans-serif;
+
+  --ratio: 1.33;
+  --base-size: 12px;
+  --h1-size: calc(var(--base-size) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio));
+  --h2-size: calc(var(--base-size) * var(--ratio) * var(--ratio) * var(--ratio));
+  --h3-size: calc(var(--base-size) * var(--ratio) * var(--ratio));
+  --h4-size: calc(var(--base-size) * var(--ratio));
+  --h5-size: calc(var(--base-size));
+  --h6-size: calc(var(--base-size) / var(--ratio));
+}
+
+body {
+  background: #EEEEEE;
+  font-family: var(--font-family-sans);
+  font-size: var(--base-size);
+  line-height: 1.4;
+  margin: 40px 0;
+  color: #000;
+}
+
+em {
+  color: #333;
+  font-style: italic;
+}
+
+p {
+  line-height: 1.4;
+}
+
+ul {
+  margin-bottom: 0;
+}
+
+li {
+  margin-bottom: 1px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #2077b2;
+}
+
+.normal-weight {
+  font-weight: normal;
+}
+
+/* Resume container */
+.resume {
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 30px 30px;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 4px #aaa;
+  -webkit-box-shadow: 2px 2px 4px #aaa;
+}
+
+.personName {
+  font-weight: bold;
+}
+
+/* Section styling */
+.sectionName {
+  text-align: left;
+  text-transform: uppercase;
+  font-size: var(--h4-size);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.sectionLine {
+  border-bottom: 1px solid #676767;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.sectionLineSoft {
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.line-connected {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  line-height: 1.1;
+}
+
+.line-connected .line {
+  flex: 1;
+  border-bottom: 1px solid #676767;
+  height: 0px;
+}
+
+.line-connected .line-soft {
+  flex: 1;
+  border-bottom: 1px solid #eeeeee;
+  height: 0px;
+}
+
+.sectionContent {
+  width: 100%;
+  margin-top: 6px;
+}
+
+/* Add spacing after each section except the last one */
+.resume > div:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+/* Common block elements */
+.sectionContent > div {
+  page-break-inside: avoid;
+  margin-bottom: 4px;
+}
+
+/* Common content elements */
+.blockHeader {
+  margin-bottom: 2px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: var(--h4-size);
+}
+
+.subtitle {
+  font-weight: 700;
+  font-size: var(--h5-size);
+}
+
+.date {
+  float: right;
+  font-weight: 500;
+  font-size: var(--h4-size);
+}
+
+.location {
+  float: right;
+  font-style: oblique;
+}
+
+.position, .degree {
+  margin-top: 1px;
+  margin-bottom: 2px;
+}
+
+.website {
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.summary {
+  margin-top: 2px;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+/* Lists */
+.sectionContent ul {
+  padding-left: 20px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  list-style-type: disc;
+}
+
+.sectionContent li::marker {
+  font-size: var(--h4-size);
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* Skill lists - special case for inline display */
+.skillBlock ul li {
+  display: inline-block;
+  margin-right: 12px;
+  margin-bottom: 1px;
+}
+
+/* Separators */
+.separator {
+  height: 1px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.divider {
+  font-weight: bold;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+/* Header elements */
+.nameBlock {
+  font-size: var(--h1-size);
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.label {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+.basicsBlock {
+  text-align: left;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.contactBlock {
+  font-size: var(--h4-size);
+}
+
+/* Education elements */
+.coursesBlock {
+  margin-top: 2px;
+}
+
+.coursesList {
+  width: 28%;
+  vertical-align: top;
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 15px;
+}
+
+.course {
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+.gpa {
+  margin-bottom: 5px;
+  font-size: var(--h5-size);
+}
+
+/* Media Queries */
+@media only screen and (max-width: 40em) {
+  body {
+    margin: 0;
+    font-size: 14px;
+  }
+  .resume {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 0.5em 1em;
+    border: none;
+  }
+  .sectionContent {
+    width: 100%;
+  }
+  .sectionContent .date {
+    padding-right: 2em;
+  }
+  .sectionName {
+    width: auto;
+  }
+  .nameBlock {
+    font-size: 20px;
+  }
+  .basicsBlock {
+    font-size: 14px;
+  }
+}
+
+@media print {
+  @page {
+    size: Letter portrait;
+    margin: 0;             /* page margins */
+  }
+
+  body {
+    margin: 0 0;
+    padding: 0 0;
+  }
+
+  .resume {
+    max-width: 100%;    /* will never exceed page width */
+    margin: 0.45in auto;
+    padding: 0 0.5in;   /* optional horizontal padding for print margins */
+    border: 0px;
+    background: #fff;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+
+  a {
+    color: black;
+  }
+}
+	</style>
+
+	</head>
+	<body>
+
+	<div class='resume'>
+    <div class='nameBlock'>
+        <span class='personName'>Richard Hendrik</span>
+        <div class='label'>Software Developer</div>
+    </div>
+
+    <div class='basicsBlock'>
+        <div class='contactBlock'>
+
+        <a href="mailto:rhendriks@mail.com" class='email'>rhendriks@mail.com</a>
+
+        <span class='divider'>|</span>
+        <span class='phone'>(123) 456-7890</span>
+
+        <span class='divider'>|</span>
+            San Francisco, California 
+
+        <span class='divider'>|</span>
+                <span class='url'>
+                <a href='https://gitplace.com/rhendricks'>GitPlace</a>
+                </span>
+                <span class='divider'>|</span>
+                <span class='url'>
+                <a href='https://linkedon.com/richardh'>LinkedOn</a>
+                </span>
+                
+        </div>
+    </div>
+    
+  <div class='sectionLineSoft'></div>
+
+  <div class='summaryBlock'>
+    <div class='sectionName'>
+      <span>SUMMARY</span>
+    </div>
+    <div class='sectionLine'></div>
+    <div class='sectionContent'>
+      <span>Richard hails from [tulsa](https://en.wikipedia.org/wiki/Tulsa,_Oklahoma). Holds a bachelor&#x27;s degree from the *University of Oklahoma* and a master&#x27;s degree from *Stanford University*. (Go Sooners) Before starting **Pied Piper**, he worked for **Hooli** as a part time software developer. While his work focuses on *applied information theory*, mostly *optimizing lossless compression* schema of both the length-limited and adaptive variants, his non-work interests range widely, everything from *quantum computing* to *chaos theory*. He could tell you about it, but THAT would NOT be a *length-limited* conversation!</span>
+    </div>
+  </div>
+
+  <div class='workBlock'>
+    <div class='sectionName'>
+        <div class='line-connected'>
+            <span>EXPERIENCE</span><span class='line'></span>
+        </div>
+    </div>
+    <div class='sectionContent'>
+			<div class="jobBlock">
+	      <div class='blockHeader'>
+            <div class='line-connected'>
+                <span class='title'><a href='https://www.facebook.com/'>Facebook</a></span>
+                <span class='line-soft'></span>
+                <span class='date'>
+                Nov. 2016 &mdash; Present
+                </span>
+            </div>
+          
+            <span class='subtitle'>
+              Principal Software Engineer
+	        </span>
+            <span class='location'>
+              California, United States
+            </span>
+	      </div>
+	      <div class='summary'>*Facebook* is an American social media conglomerate corporation based in *Menlo Park, California*. It was founded by **Mark Zuckerberg**, along with his fellow roommates and students at Harvard College, who were Eduardo Saverin, Andrew McCollum, Dustin Moskovitz and Chris Hughes, originally as TheFacebook.com—today's Facebook, a popular global social networking website.</div>
+	      <ul class='highlights'>
+	        <li>Vitae purus faucibus ornare suspendisse</li>
+            <ul>
+                <li>Ut enim blandit volutpat maecenas</li>
+            </ul>
+	        <li>Volutpat blandit aliquam</li>
+	        <li>Ultrices gravida dictum fusce ut placerat</li>
+	        <li>Elit duis tristique sollicitudin nibh</li>
+	        <li>Luctus accumsan tortor posuere ac ut consequat</li>
+	      </ul>
+	      <div class='separator'></div>
+			</div>
+			<div class="jobBlock">
+	      <div class='blockHeader'>
+            <div class='line-connected'>
+                <span class='title'><a href='https://www.amazon.com/'>Amazon</a></span>
+                <span class='line-soft'></span>
+                <span class='date'>
+                Jul. 2017 &mdash; Nov. 2016
+                </span>
+            </div>
+          
+            <span class='subtitle'>
+              Senior Software Engineer
+	        </span>
+            <span class='location'>
+              Washington, United States
+            </span>
+	      </div>
+	      <div class='summary'>*Amazon.com* is an American multinational technology company based in *Seattle, Washington*, which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence. The company has been referred to as *one of the most influential economic and cultural forces in the world*, as well as the world's most valuable brand.</div>
+	      <ul class='highlights'>
+	        <li>Massa id neque aliquam vestibulum morbi</li>
+	        <li>Consectetur adipiscing elit</li>
+	        <li>Sed do eiusmod tempor incididunt ut labore</li>
+	        <li>Mattis vulputate enim nulla aliquet porttitor</li>
+	        <li>incididunt ut labore et dolore magna aliqua</li>
+	        <li>Lacus luctus accumsan tortor</li>
+	      </ul>
+	      
+			</div>
+    </div>
+  </div>
+
+
+	<div class='education'>
+    <div class='sectionName'>
+        <div class='line-connected'>
+            <span>EDUCATION</span><span class='line'></span>
+        </div>
+    </div>
+    <div class='sectionContent'>
+      <div class='educationBlock'>
+        <div class='blockHeader'>
+            <div class='line-connected'>
+                <span class='title'>
+                    <a href='https://www.stanford.edu/'>University of Stanford</a>
+                </span>
+                <span class='line-soft'></span>
+                <span class='date'>Aug. 2008 &mdash; Jan. 2012</span>
+            </div>
+          <div class='degree'><em>Master, Computer Science</em></div>
+        </div>
+      </div>
+      <div class='separator'></div>
+      <div class='educationBlock'>
+        <div class='blockHeader'>
+            <div class='line-connected'>
+                <span class='title'>
+                    <a href='https://www.ou.edu/'>University of Oklahoma</a>
+                </span>
+                <span class='line-soft'></span>
+                <span class='date'>Aug. 2004 &mdash; Jan. 2008</span>
+            </div>
+          <div class='degree'><em>Bachelor, Information Technology</em></div>
+        </div>
+      </div>
+      
+    </div>
+	</div>
+
+
+
+
+
+    <div class='certificates'>
+        <div class='sectionName'>
+            <div class='line-connected'>
+              <span>CERTIFICATES, SKILLS, INTERESTS</span><span class='line'></span>
+            </div> 
+            
+        </div>
+        <div class='sectionContent'>
+
+        <div class='certificateBlock'>
+            <span class='title'>Certificates: </span>
+            <span class='name'><a href='https://www.your-badge.com'>AWS Certified Solutions
+
+Architect - Professional</a></span>
+            <span class='keywords'>( <a href='https://www.your-badge.com'>Amazon Web Services</a> )</span><span>, </span>
+            <span class='name'><a href='https://www.your-badge.com'>Oracle Certified Professional
+
+Java SE 17 Developer</a></span>
+            <span class='keywords'>( <a href='https://www.your-badge.com'>Oracle</a> )</span><span>, </span>
+            <span class='name'><a href='https://www.your-badge.com'>CCNA Routing and Switching</a></span>
+            <span class='keywords'>( <a href='https://www.your-badge.com'>Cisco</a> )</span>
+        </div>
+        
+        <div class='skillBlock'>
+            <span class='title'>Other Skills: </span>
+            <span class='name'>Languages</span><!--
+            --><span class='keywords'> (
+            Java<!--
+            -->, 
+            Python<!--
+            -->, 
+            Javascript<!--
+            -->, 
+            Rust<!--
+            -->, 
+            Golang<!--
+            -->
+            )</span><!--
+            --><span>, </span>
+            <span class='name'>Frameworks</span><!--
+            --><span class='keywords'> (
+            Spring<!--
+            -->, 
+            Django<!--
+            -->, 
+            Express<!--
+            -->
+            )</span><!--
+            --><span>, </span>
+            <span class='name'>Tools</span><!--
+            --><span class='keywords'> (
+            VS Code<!--
+            -->, 
+            Intellij IDEA<!--
+            -->
+            )</span><!--
+            --><span>, </span>
+            <span class='name'>Technologies</span><!--
+            --><span class='keywords'> (
+            Docker<!--
+            -->, 
+            AWS<!--
+            -->
+            )</span><!--
+            --><span>, </span>
+            <span class='name'>Other</span><!--
+            --><span class='keywords'> (
+            Open source<!--
+            -->, 
+            XP<!--
+            -->
+            )</span><!--
+            -->
+        </div>
+
+        <div class='interestBlock'>
+            <span class='title'>Interests: </span>
+            <span class='name'>Pixelart</span><!--
+            --><span>, </span>
+            <span class='name'>Open Source</span><!--
+            --><span>, </span>
+            <span class='name'>Gardening</span><!--
+            --><span>, </span>
+            <span class='name'>Writing</span><!--
+            -->
+        </div>
+      
+        </div>
+    </div>
+
+
+
+	</body>
+</html>

@@ -5,7 +5,7 @@
   "author": "Ji hann Hong",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jhong16/jsonresume-theme-lumen.git"
+    "url": "git+https://github.com/jhong16/jsonresume-theme-lumen.git"
   },
   "license": "GPL",
   "dependencies": {

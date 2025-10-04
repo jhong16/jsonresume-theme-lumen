@@ -17,16 +17,19 @@ This was a learning exercise and an outcome of a resume format to optimize maxim
 npm install github:jhong16/jsonresume-theme-lumen --save-dev
 ```
 
-## Install and Build (Bootstrapped)
+## Install and Build Manual (YMMV)
 ```
-git clone <jsonresume-theme-lumen>
-cd jsonresume-theme-lumen
-
 node --version # v20.19.2
 npm --version # 9.2.0
 
-npm install path/<jsonresume-theme-lumen> --save-dev
+git clone <jsonresume-theme-lumen>
+cd jsonresume-theme-lumen
+
+npm link
 npm link jsonresume-theme-lumen
+
+# or just?
+npm install <abs_path>/<jsonresume-theme-lumen> --save-dev
 ```
 
 ### Deploy with resume-cli

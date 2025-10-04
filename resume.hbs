@@ -18,7 +18,11 @@
 	{{#resume.basics}}
     <div class='nameBlock'>
         <span class='personName'>{{name}}</span>
-        {{#if label}}<div class='label'>{{label}}</div>{{/if}}
+        {{#if label}}
+          <div class='line-connected'>
+            <span class='label'>{{label}}</span><span class='line-soft'></span>
+          </div>
+        {{/if}}
     </div>
 
     <div class='basicsBlock'>
@@ -58,9 +62,10 @@
   {{#if resume.basics.summary}}
   <div class='summaryBlock'>
     <div class='sectionName'>
-      <span>SUMMARY</span>
+      <div class='line-connected'>
+        <span>SUMMARY</span><span class='line'></span>
+      </div>
     </div>
-    <div class='sectionLine'></div>
     <div class='sectionContent'>
       <span>{{resume.basics.summary}}</span>
     </div>

@@ -23,10 +23,25 @@
   --h4-size: calc(var(--base-size) * var(--ratio));
   --h5-size: calc(var(--base-size));
   --h6-size: calc(var(--base-size) / var(--ratio));
+
+  --header-bg-color: #74ABE2;
+  --header-bg-color-secondary: #5563DE;
+  --header-bg-color-tertiary: #8E44AD;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 body {
-  background: #EEEEEE;
+  background: linear-gradient(
+      120deg,
+      var(--header-bg-color),
+      var(--header-bg-color-secondary),
+      var(--header-bg-color-tertiary)
+  );
   font-family: var(--font-family-sans);
   font-size: var(--base-size);
   line-height: 1.4;
@@ -225,7 +240,7 @@ a:hover {
 }
 
 .label {
-  font-size: 16px;
+  font-size: var(--h4-size);
   margin-bottom: 0;
 }
 
@@ -325,7 +340,9 @@ a:hover {
 	<div class='resume'>
     <div class='nameBlock'>
         <span class='personName'>Richard Hendrik</span>
-        <div class='label'>Software Developer</div>
+          <div class='line-connected'>
+            <span class='label'>Software Developer</span><span class='line-soft'></span>
+          </div>
     </div>
 
     <div class='basicsBlock'>
@@ -355,9 +372,10 @@ a:hover {
 
   <div class='summaryBlock'>
     <div class='sectionName'>
-      <span>SUMMARY</span>
+      <div class='line-connected'>
+        <span>SUMMARY</span><span class='line'></span>
+      </div>
     </div>
-    <div class='sectionLine'></div>
     <div class='sectionContent'>
       <span>Richard hails from [tulsa](https://en.wikipedia.org/wiki/Tulsa,_Oklahoma). Holds a bachelor&#x27;s degree from the *University of Oklahoma* and a master&#x27;s degree from *Stanford University*. (Go Sooners) Before starting **Pied Piper**, he worked for **Hooli** as a part time software developer. While his work focuses on *applied information theory*, mostly *optimizing lossless compression* schema of both the length-limited and adaptive variants, his non-work interests range widely, everything from *quantum computing* to *chaos theory*. He could tell you about it, but THAT would NOT be a *length-limited* conversation!</span>
     </div>

@@ -13,10 +13,25 @@
   --h4-size: calc(var(--base-size) * var(--ratio));
   --h5-size: calc(var(--base-size));
   --h6-size: calc(var(--base-size) / var(--ratio));
+
+  --header-bg-color: #74ABE2;
+  --header-bg-color-secondary: #5563DE;
+  --header-bg-color-tertiary: #8E44AD;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 body {
-  background: #EEEEEE;
+  background: linear-gradient(
+      120deg,
+      var(--header-bg-color),
+      var(--header-bg-color-secondary),
+      var(--header-bg-color-tertiary)
+  );
   font-family: var(--font-family-sans);
   font-size: var(--base-size);
   line-height: 1.4;
@@ -215,7 +230,7 @@ a:hover {
 }
 
 .label {
-  font-size: 16px;
+  font-size: var(--h4-size);
   margin-bottom: 0;
 }
 
